@@ -160,13 +160,17 @@ $$u_t \longrightarrow \pi_t \longrightarrow r_t$$
 
 This encodes the following identifying assumptions for the current period $t$:
 
-| Shock in \ Responds | $u_t$ | $\pi_t$ | $r_t$ |
+| | $u_t$ shock | $\pi_t$ shock | $r_t$ shock |
 |---|:---:|:---:|:---:|
-| $u_t$ shock | ✓ | ✓ | ✓ |
-| $\pi_t$ shock | ✗ | ✓ | ✓ |
-| $r_t$ shock | ✗ | ✗ | ✓ |
+| **Unemployment** $u_t$ | ✓ | ✗ | ✗ |
+| **Inflation** $\pi_t$ | ✓ | ✓ | ✗ |
+| **Fed Funds Rate** $r_t$ | ✓ | ✓ | ✓ |
 
-A ✓ means the variable responds contemporaneously to that shock; ✗ means the response is restricted to zero within the period. Concretely: the Fed observes unemployment and inflation before setting the policy rate, while real and price variables do not react to monetary policy shocks within the same quarter. All cross-variable effects are unrestricted across lags.
+Unemployment ($u_t$) does not respond contemporaneously to inflation or monetary policy shocks — it is the most exogenous variable in the system.
+
+Inflation ($\pi_t$) does not respond contemporaneously to monetary policy shocks — the price level is assumed to be predetermined within the quarter relative to the policy rate.
+
+The Federal Funds Rate ($r_t$) responds contemporaneously to all shocks — the Fed sets the rate after observing current unemployment and inflation. All variables interact freely across lags.
 
 ---
 
