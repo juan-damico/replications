@@ -18,13 +18,7 @@
 
 > **Stock, J. H., & Watson, M. W. (2001).** Vector autoregressions. *Journal of Economic Perspectives*, 15(4), 101–115.
 
-This paper provides one of the most accessible and widely cited introductions to **Vector Autoregressive (VAR)** models in macroeconomics. Stock & Watson demonstrate how VARs can be used to capture dynamic relationships between multiple time series, forecast macroeconomic variables, and identify structural shocks through impulse-response analysis.
-
----
-
-## Objective
-
-Replicate the core VAR workflow from Stock & Watson (2001) in R, documenting every step from raw data to impulse-response functions — with enough clarity that the code serves as a standalone learning resource.
+Stock & Watson (2001) assess the VAR framework introduced by Sims (1980), which at the time offered a new and promising approach to macroeconomic modeling. Their article reviews how well VARs perform across four tasks: data description, forecasting, structural inference, and policy analysis — using a three-variable system of inflation, unemployment, and the federal funds rate as the running empirical example.
 
 ---
 
@@ -32,63 +26,22 @@ Replicate the core VAR workflow from Stock & Watson (2001) in R, documenting eve
 
 ```
 stock-watson-2001/
-├── data/
-│   ├── raw/                    # Original source data
-│   └── processed/              # Cleaned, stationary series
-├── R/
-│   ├── 01_data_prep.R          # Loading, transformations, stationarity tests
-│   ├── 02_lag_selection.R      # AIC / BIC / HQ criteria
-│   ├── 03_var_estimation.R     # Reduced-form VAR estimation
-│   └── 04_irf_analysis.R       # Impulse-response functions + confidence bands
+├── code/
+│   ├── 01_data_prep.R
+│   ├── 02_lag_selection.R
+│   ├── 03_var_estimation.R
+│   └── 04_irf_analysis.R
 ├── figures/
-│   └── figure.png              # IRF plots
-└── README.md
+│   └── figure1.png
+└── dataset/
+    └── stock_watson_dataset.csv
 ```
-
----
-
-## Workflow
-
-```
-Raw Data → Stationarity Tests → Lag Selection → VAR Estimation → IRF Analysis → Results
-```
-
-### Steps
-
-**1. Data Preparation** — Variable selection, unit root tests (ADF/KPSS), and transformations (log-differences, detrending) to ensure stationarity before estimation.
-
-**2. Lag Selection** — Comparison of information criteria (AIC, BIC, Hannan-Quinn) to determine the optimal lag length for the VAR system.
-
-**3. VAR Estimation** — Estimation of the reduced-form VAR using OLS equation by equation, following the specification in Stock & Watson (2001).
-
-**4. Impulse-Response Analysis** — Computation of orthogonalized IRFs via Cholesky decomposition, with bootstrapped confidence bands. Interpretation of dynamic responses to structural shocks.
-
----
-
-## Getting Started
-
-### Requirements
-
-```r
-install.packages(c("vars", "tseries", "urca", "ggplot2", "dplyr", "readr"))
-```
-
-### Run the replication
-
-```r
-setwd("R/")
-
-source("01_data_prep.R")
-source("02_lag_selection.R")
-source("03_var_estimation.R")
-source("04_irf_analysis.R")
-```
-
-Each script is self-contained and annotated. Run them in order for the full pipeline.
 
 ---
 
 ## Model Specification
+
+### What are VAR models?
 
 A Vector Autoregression (VAR) is a multivariate time series model in which each endogenous variable is expressed as a linear function of its own past values and the past values of all other variables in the system. Unlike single-equation models, the VAR treats all variables as jointly endogenous, allowing for rich dynamic interactions across equations. Each equation shares the same right-hand side regressors — $p$ lags of every variable in the system — and is estimated by OLS equation by equation.
 
@@ -104,41 +57,10 @@ $$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha
 
 ### Matrix Form
 
-$$
-\begin{aligned}
-\begin{bmatrix}
-\pi_t\\
-u_t\\
-r_t
-\end{bmatrix}
-&=
-\begin{bmatrix}
-c_1\\
-c_2\\
-c_3
-\end{bmatrix}
-+
-\sum_{l=1}^{4}
-\begin{bmatrix}
-\alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
-\alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
-\alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
-\end{bmatrix}
-\begin{bmatrix}
-\pi_{t-l}\\
-u_{t-l}\\
-r_{t-l}
-\end{bmatrix}
-+
-\begin{bmatrix}
-\varepsilon_{1t}\\
-\varepsilon_{2t}\\
-\varepsilon_{3t}
-\end{bmatrix}.
-\end{aligned}
-$$
+$$\mathbf{y}_t = \mathbf{c} + \mathbf{A}_1 \mathbf{y}_{t-1} + \mathbf{A}_2 \mathbf{y}_{t-2} + \mathbf{A}_3 \mathbf{y}_{t-3} + \mathbf{A}_4 \mathbf{y}_{t-4} + \boldsymbol{\varepsilon}_t$$
 
-where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
+where $\mathbf{y}_t = (\pi_t,\, u_t,\, r_t)'$, each $\mathbf{A}_l$ is a $3 \times 3$ matrix of coefficients at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$ with $\boldsymbol{\Sigma}$ a $3 \times 3$ positive definite covariance matrix.
+
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
