@@ -163,8 +163,28 @@ The ordering adopted here is: **Unemployment → Inflation → Federal Funds Rat
 ![Impulse-Response Functions](figures/figure.png)
 
 *Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on the unemployment rate, inflation, and the federal funds rate. Identification via Cholesky decomposition with ordering: unemployment → inflation → federal funds rate. Dashed lines represent 95% bootstrap confidence bands. Horizon measured in quarters. Replication based on Stock & Watson (2001).*
+---
+
+## Identification: Recursive Ordering
+
+Structural shocks are recovered via **Cholesky decomposition** of the reduced-form covariance matrix $\boldsymbol{\Sigma} = \mathbf{P}\mathbf{P}'$, where $\mathbf{P}$ is lower triangular. This imposes a **recursive causal ordering**: a variable can be affected contemporaneously only by variables that precede it in the ordering, while all lagged cross-variable effects remain unrestricted.
+
+The ordering adopted is:
+
+$$u_t \longrightarrow \pi_t \longrightarrow r_t$$
+
+This encodes the following identifying assumptions for the current period $t$:
+
+| Shock in \ Responds | $u_t$ | $\pi_t$ | $r_t$ |
+|---|:---:|:---:|:---:|
+| $u_t$ shock | ✓ | ✓ | ✓ |
+| $\pi_t$ shock | ✗ | ✓ | ✓ |
+| $r_t$ shock | ✗ | ✗ | ✓ |
+
+A ✓ means the variable responds contemporaneously to that shock; ✗ means the response is restricted to zero within the period. Concretely: the Fed observes unemployment and inflation before setting the policy rate, while real and price variables do not react to monetary policy shocks within the same quarter. All cross-variable effects are unrestricted across lags.
 
 ---
+
 
 ## Citation
 
