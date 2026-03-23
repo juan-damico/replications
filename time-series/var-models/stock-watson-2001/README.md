@@ -121,7 +121,7 @@ To evaluate the VAR's predictive performance relative to simpler benchmarks, pse
 
 The expanding window ensures that each forecast is genuinely out-of-sample — no future information is used — while allowing the model to exploit the full history of observations as it grows.
 
-![Pseudo Out-of-Sample Forecasts](figures/pseudo_forecasts.png)
+![Pseudo Out-of-Sample Forecasts](figures/pseudo_forecasts)
 <sub>Figure 2: Pseudo out-of-sample forecasts 4 quarters ahead from a VAR(4), AR(4), and Random Walk, compared against realized values. Estimation period: 1960:Q1–1984:Q4 (initial window); evaluation period: 1985:Q1–2000:Q4. Expanding window re-estimation at each step. The VAR tracks the secular decline in inflation and unemployment through the 1990s more closely than the AR or RW benchmarks, while all three models struggle during the sharp disinflation of the late 1980s.</sub>
 
 ## Citation
