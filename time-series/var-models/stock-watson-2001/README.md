@@ -87,51 +87,32 @@ source("04_irf_analysis.R")
 Each script is self-contained and annotated. Run them in order for the full pipeline.
 
 ---
+
 ## Model Specification
 
 The system consists of three endogenous variables — unemployment rate ($u_t$), inflation ($\pi_t$), and the federal funds rate ($r_t$) — estimated as a VAR(4) with a constant.
 
 ### Equation Form
 
-$$
-u_t = c_1 + \sum_{l=1}^{4} \alpha_{11}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{12}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{13}^{(l)} r_{t-l} + \varepsilon_{1t}
-$$
+$$u_t = c_1 + \sum_{l=1}^{4} \alpha_{11}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{12}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{13}^{(l)} r_{t-l} + \varepsilon_{1t}$$
 
-$$
-\pi_t = c_2 + \sum_{l=1}^{4} \alpha_{21}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{22}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{23}^{(l)} r_{t-l} + \varepsilon_{2t}
-$$
+$$\pi_t = c_2 + \sum_{l=1}^{4} \alpha_{21}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{22}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{23}^{(l)} r_{t-l} + \varepsilon_{2t}$$
 
-$$
-r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{32}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{33}^{(l)} r_{t-l} + \varepsilon_{3t}
-$$
+$$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{32}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{33}^{(l)} r_{t-l} + \varepsilon_{3t}$$
 
 ### Matrix Form
 
-$$
-\begin{pmatrix} u_t \\ \pi_t \\ r_t \end{pmatrix}
-=
-\begin{pmatrix} c_1 \\ c_2 \\ c_3 \end{pmatrix}
-+
-\sum_{l=1}^{4}
-\begin{pmatrix}
-\alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
-\alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
-\alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
-\end{pmatrix}
-\begin{pmatrix} u_{t-l} \\ \pi_{t-l} \\ r_{t-l} \end{pmatrix}
-+
-\begin{pmatrix} \varepsilon_{1t} \\ \varepsilon_{2t} \\ \varepsilon_{3t} \end{pmatrix}
-$$
+$$\begin{pmatrix} u_t \\ \pi_t \\ r_t \end{pmatrix} = \begin{pmatrix} c_1 \\ c_2 \\ c_3 \end{pmatrix} + \sum_{l=1}^{4} \begin{pmatrix} \alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\ \alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\ \alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)} \end{pmatrix} \begin{pmatrix} u_{t-l} \\ \pi_{t-l} \\ r_{t-l} \end{pmatrix} + \begin{pmatrix} \varepsilon_{1t} \\ \varepsilon_{2t} \\ \varepsilon_{3t} \end{pmatrix}$$
 
 where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
 
 ### Compact Form
 
-$$
-\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})
-$$
+$$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
 
 where $\mathbf{y}_t = (u_t,\, \pi_t,\, r_t)'$ is the $3 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $3 \times 3$ coefficient matrix at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
+
+---
 
 ## Results
 
