@@ -90,7 +90,9 @@ Each script is self-contained and annotated. Run them in order for the full pipe
 
 ## Model Specification
 
-The system consists of three endogenous variables — unemployment rate ($u_t$), inflation ($\pi_t$), and the federal funds rate ($r_t$) — estimated as a VAR(4) with a constant.
+A Vector Autoregression (VAR) is a multivariate time series model in which each endogenous variable is expressed as a linear function of its own past values and the past values of all other variables in the system. Unlike single-equation models, the VAR treats all variables as jointly endogenous, allowing for rich dynamic interactions across equations. Each equation shares the same right-hand side regressors — $p$ lags of every variable in the system — and is estimated by OLS equation by equation.
+
+The system here consists of three endogenous variables — unemployment rate ($u_t$), inflation ($\pi_t$), and the federal funds rate ($r_t$) — with $p = 4$ lags and a constant term in each equation.
 
 ### Equation Form
 
@@ -143,6 +145,8 @@ where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigm
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
 
 where $\mathbf{y}_t = (u_t,\, \pi_t,\, r_t)'$ is the $3 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $3 \times 3$ coefficient matrix at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
+
+This is the **reduced-form VAR**: each equation is estimated by OLS and the residuals $\boldsymbol{\varepsilon}_t$ are reduced-form disturbances — linear combinations of the underlying structural shocks. As such, they carry no direct structural interpretation. Identification of economically meaningful shocks requires an additional assumption, introduced in the next section via Cholesky decomposition of $\boldsymbol{\Sigma}$.
 
 ---
 
