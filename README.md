@@ -14,11 +14,13 @@ Each replication is self-contained and includes code, data, and documentation.
 
 ## About
 
-This repository is a personal project by [Juan Nicolás D'Amico](mailto:juan.damico@forecastingeconomics.com) and serves as a showcase of applied econometric skills and economic knowledge. It is intended for anyone interested in seeing how empirical methods are implemented in practice — including potential collaborators, employers, or researchers.
+This repository serves as a portfolio of applied economic and econometric work by [Juan Nicolás D'Amico](mailto:juan.damico@forecastingeconomics.com). It documents the full empirical workflow, including the interpretation of academic research, reconstruction of datasets from public sources, implementation of econometric models, and presentation of results.
+
+The repository provides a transparent and reproducible record of applied work, offering concrete evidence of technical and analytical capabilities. It may be of interest for research, collaboration, or professional evaluation.
 
 All replications are built independently from scratch:
-- Datasets are reconstructed by the author based on variable definitions and sample periods described in the original papers. Series are downloaded from public databases (FRED, World Bank, etc.) and processed following the authors' methodology.
-- All code is written by Juan D'Amico. While replications aim to closely follow the original papers, minor discrepancies may arise due to differences in data vintages, software, or interpretation choices.
+- Datasets are reconstructed by the author based on variable definitions and sample periods described in the original papers. Series are sourced from public databases (e.g., FRED, World Bank) and processed in line with the original methodology.
+- All code is written by Juan D'Amico. While the replications aim to closely follow the original papers, minor discrepancies may arise due to differences in data vintages, software, or implementation choices.
 
 ---
 
