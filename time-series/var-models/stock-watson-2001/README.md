@@ -100,39 +100,40 @@ $$\pi_t = c_2 + \sum_{l=1}^{4} \alpha_{21}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha
 
 $$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{32}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{33}^{(l)} r_{t-l} + \varepsilon_{3t}$$
 
+
 ### Matrix Form
 
 $$
 \begin{aligned}
-\begin{pmatrix}
+\begin{bmatrix}
 u_t\\
 \pi_t\\
 r_t
-\end{pmatrix}
+\end{bmatrix}
 &=
-\begin{pmatrix}
+\begin{bmatrix}
 c_1\\
 c_2\\
 c_3
-\end{pmatrix}
+\end{bmatrix}
 +
 \sum_{l=1}^{4}
-\begin{pmatrix}
+\begin{bmatrix}
 \alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
 \alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
 \alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 u_{t-l}\\
 \pi_{t-l}\\
 r_{t-l}
-\end{pmatrix} \\
-&\quad +
-\begin{pmatrix}
+\end{bmatrix}
++
+\begin{bmatrix}
 \varepsilon_{1t}\\
 \varepsilon_{2t}\\
 \varepsilon_{3t}
-\end{pmatrix}.
+\end{bmatrix}.
 \end{aligned}
 $$
 
