@@ -181,7 +181,7 @@ An impulse-response function (IRF) traces the dynamic effect of a one-unit shock
 
 Because VAR residuals are typically correlated across equations, raw shocks cannot be interpreted as economically meaningful. To recover interpretable structural shocks, the residuals must be orthogonalized via the Cholesky decomposition described above.
 
-![Impulse-Response Functions](figures/figure.png)
+![Impulse-Response Functions](figures/figure1.png)
 
 <sub>Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on inflation, unemployment, and the federal funds rate. Identification via Cholesky decomposition with ordering: inflation → unemployment → federal funds rate, following Stock & Watson (2001). Dashed lines represent 68% bootstrap confidence bands. Horizon measured in quarters.</sub>
 
