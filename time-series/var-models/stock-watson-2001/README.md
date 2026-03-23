@@ -102,10 +102,41 @@ $$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{
 
 ### Matrix Form
 
-$$\begin{pmatrix} u_t \\ \pi_t \\ r_t \end{pmatrix} = \begin{pmatrix} c_1 \\ c_2 \\ c_3 \end{pmatrix} + \sum_{l=1}^{4} \begin{pmatrix} \alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\ \alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\ \alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)} \end{pmatrix} \begin{pmatrix} u_{t-l} \\ \pi_{t-l} \\ r_{t-l} \end{pmatrix} + \begin{pmatrix} \varepsilon_{1t} \\ \varepsilon_{2t} \\ \varepsilon_{3t} \end{pmatrix}$$
+$$
+\begin{aligned}
+\begin{pmatrix}
+u_t\\
+\pi_t\\
+r_t
+\end{pmatrix}
+&=
+\begin{pmatrix}
+c_1\\
+c_2\\
+c_3
+\end{pmatrix}
++
+\sum_{l=1}^{4}
+\begin{pmatrix}
+\alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
+\alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
+\alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
+\end{pmatrix}
+\begin{pmatrix}
+u_{t-l}\\
+\pi_{t-l}\\
+r_{t-l}
+\end{pmatrix} \\
+&\quad +
+\begin{pmatrix}
+\varepsilon_{1t}\\
+\varepsilon_{2t}\\
+\varepsilon_{3t}
+\end{pmatrix}.
+\end{aligned}
+$$
 
-where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
-
+where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
