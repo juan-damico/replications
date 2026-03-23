@@ -23,18 +23,19 @@ Stock & Watson (2001) assess the VAR framework introduced by Sims (1980), which 
 ---
 
 ## Repository Structure
-
 ```
 stock-watson-2001/
-├── code/
-│   ├── 01_data_prep.R
-│   ├── 02_lag_selection.R
-│   ├── 03_var_estimation.R
-│   └── 04_irf_analysis.R
+├── data/
+│   ├── stock_watson_dataset.csv
+│   └── README.md
 ├── figures/
 │   └── figure1.png
-└── dataset/
-    └── stock_watson_dataset.csv
+├── paper/
+│   ├── stock_watson_2001.pdf
+│   └── README.md
+├── r-script/
+│   └── replication_file.R
+└── README.md
 ```
 
 ---
