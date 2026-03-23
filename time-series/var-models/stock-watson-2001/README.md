@@ -1,104 +1,107 @@
 <div align="center">
 
-# 📊 Econometric Replications
-
-### Reproducible implementations of landmark papers in macroeconometrics
+# Stock & Watson (2001)
+### Vector Autoregressions — A Replication in R
 
 [![R](https://img.shields.io/badge/Language-R-276DC3?style=flat-square&logo=r&logoColor=white)](https://www.r-project.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)]()
-[![Replications](https://img.shields.io/badge/Papers%20Replicated-1-blue?style=flat-square)]()
+[![Method](https://img.shields.io/badge/Method-VAR-8A2BE2?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)]()
+[![Journal](https://img.shields.io/badge/Journal-JEP%202001-orange?style=flat-square)]()
 
-*By [Juan Nicolás D'Amico](https://github.com/juan-damico) · For educational and research purposes*
+*Part of the [`replications`](../../../README.md) repository by [Juan Nicolás D'Amico](https://github.com/juan-damico)*
 
 </div>
 
 ---
 
-## Overview
+## The Paper
 
-This repository contains rigorous, self-contained replications of influential econometrics papers, with an emphasis on **clarity**, **reproducibility**, and **pedagogical value**. Each replication follows the original methodology as closely as possible, with transparent documentation of any deviations.
+> **Stock, J. H., & Watson, M. W. (2001).** Vector autoregressions. *Journal of Economic Perspectives*, 15(4), 101–115.
 
-> **Audience:** Graduate students, researchers, and practitioners looking for well-documented reference implementations.
-
----
-
-## 📁 Replications
-
-| # | Paper | Method | Language | Status |
-|---|-------|--------|----------|--------|
-| 01 | [Stock & Watson (2001)](#-stock--watson-2001) | Vector Autoregressions (VAR) | R | ✅ Complete |
+This paper provides one of the most accessible and widely cited introductions to **Vector Autoregressive (VAR)** models in macroeconomics. Stock & Watson demonstrate how VARs can be used to capture dynamic relationships between multiple time series, forecast macroeconomic variables, and identify structural shocks through impulse-response analysis.
 
 ---
 
-## 📄 Stock & Watson (2001)
+## Objective
 
-> *Vector Autoregressions* — Journal of Economic Perspectives, 15(4), 101–115.
+Replicate the core VAR workflow from Stock & Watson (2001) in R, documenting every step from raw data to impulse-response functions — with enough clarity that the code serves as a standalone learning resource.
 
-### What this replication covers
+---
 
-This folder provides a step-by-step R implementation of the VAR framework introduced in Stock & Watson (2001), one of the most cited introductions to vector autoregressive modeling in macroeconomics.
+## Repository Structure
 
 ```
 stock-watson-2001/
-├── data/               # Raw and processed datasets
+├── data/
+│   ├── raw/                    # Original source data
+│   └── processed/              # Cleaned, stationary series
 ├── R/
-│   ├── 01_data_prep.R         # Data loading and transformation
-│   ├── 02_var_estimation.R    # VAR model estimation
-│   ├── 03_lag_selection.R     # Information-criterion lag selection
-│   └── 04_irf_analysis.R      # Impulse-response function analysis
+│   ├── 01_data_prep.R          # Loading, transformations, stationarity tests
+│   ├── 02_lag_selection.R      # AIC / BIC / HQ criteria
+│   ├── 03_var_estimation.R     # Reduced-form VAR estimation
+│   └── 04_irf_analysis.R       # Impulse-response functions + confidence bands
 ├── output/
-│   ├── figures/               # IRF plots and diagnostics
-│   └── tables/                # Coefficient and test result tables
-└── README.md                  # Paper-specific documentation
+│   ├── figures/                # IRF plots and diagnostics
+│   └── tables/                 # Coefficient tables and test results
+└── README.md
 ```
-
-### Workflow
-
-```
-Raw Data  →  Preparation  →  Lag Selection  →  VAR Estimation  →  IRF Analysis  →  Results
-```
-
-**Steps implemented:**
-
-1. **Data preparation** — variable selection, stationarity checks, transformations
-2. **Lag selection** — AIC / BIC / HQ criteria comparison
-3. **VAR estimation** — reduced-form system estimation
-4. **Impulse-response analysis** — orthogonalized IRFs with confidence bands
-5. **Interpretation** — structured discussion of results vs. original paper
 
 ---
 
-## 🚀 Getting Started
+## Workflow
 
-### Prerequisites
-
-```r
-# Required packages
-install.packages(c("vars", "tseries", "ggplot2", "dplyr", "readr"))
+```
+Raw Data → Stationarity Tests → Lag Selection → VAR Estimation → IRF Analysis → Results
 ```
 
-### Run a replication
+### Steps
+
+**1. Data Preparation** — Variable selection, unit root tests (ADF/KPSS), and transformations (log-differences, detrending) to ensure stationarity before estimation.
+
+**2. Lag Selection** — Comparison of information criteria (AIC, BIC, Hannan-Quinn) to determine the optimal lag length for the VAR system.
+
+**3. VAR Estimation** — Estimation of the reduced-form VAR using OLS equation by equation, following the specification in Stock & Watson (2001).
+
+**4. Impulse-Response Analysis** — Computation of orthogonalized IRFs via Cholesky decomposition, with bootstrapped confidence bands. Interpretation of dynamic responses to structural shocks.
+
+---
+
+## Getting Started
+
+### Requirements
 
 ```r
-# Clone the repo
-# git clone https://github.com/juan-damico/replications.git
+install.packages(c("vars", "tseries", "urca", "ggplot2", "dplyr", "readr"))
+```
 
-# Navigate to the replication
-setwd("stock-watson-2001/R")
+### Run the replication
 
-# Run in order
+```r
+setwd("R/")
+
 source("01_data_prep.R")
-source("02_var_estimation.R")
-source("03_lag_selection.R")
+source("02_lag_selection.R")
+source("03_var_estimation.R")
 source("04_irf_analysis.R")
 ```
 
+Each script is self-contained and annotated. Run them in order for the full pipeline.
+
 ---
 
-## 📚 Citation
+## Results
 
-If you use this repository, please cite both the **original paper** and **this repository**:
+> *To be populated as outputs are finalized.*
+
+Key outputs include:
+- Lag selection table (AIC / BIC / HQ comparison)
+- Estimated VAR coefficients
+- Impulse-response function plots with confidence bands
+- Forecast error variance decomposition (FEVD)
+
+---
+
+## Citation
 
 **Original Paper**
 ```bibtex
@@ -114,7 +117,7 @@ If you use this repository, please cite both the **original paper** and **this r
 }
 ```
 
-**This Repository**
+**This Replication**
 ```bibtex
 @misc{damico2026replications,
   author       = {D'Amico, Juan Nicolas},
@@ -127,22 +130,14 @@ If you use this repository, please cite both the **original paper** and **this r
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 
-This repository contains **independent replications** developed by Juan D'Amico for educational and research purposes. It is not affiliated with or endorsed by any original author.
-
-While every effort is made to faithfully follow the original methodology, discrepancies may arise due to differences in data availability, software versions, or interpretation. This work is not a substitute for the original papers.
-
----
-
-## 📬 Contact & Contributions
-
-Found an error or have a suggestion? Open an [issue](https://github.com/juan-damico/replications/issues) or submit a pull request. Contributions that improve accuracy, clarity, or coverage are welcome.
+This is an independent replication developed by Juan D'Amico for educational and research purposes, and is not affiliated with or endorsed by the original authors. Discrepancies from the original paper may arise due to data availability, software differences, or interpretation choices. Please cite both the original paper and this repository if you use this work.
 
 ---
 
 <div align="center">
 
-*Made with rigor and care · Juan Nicolás D'Amico · 2026*
+*← Back to [`replications`](../../../README.md)*
 
 </div>
