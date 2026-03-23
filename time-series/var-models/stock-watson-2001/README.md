@@ -104,10 +104,41 @@ $$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha
 
 ### Matrix Form
 
-$$\mathbf{y}_t = \mathbf{c} + \mathbf{A}_1 \mathbf{y}_{t-1} + \mathbf{A}_2 \mathbf{y}_{t-2} + \mathbf{A}_3 \mathbf{y}_{t-3} + \mathbf{A}_4 \mathbf{y}_{t-4} + \boldsymbol{\varepsilon}_t$$
+$$
+\begin{aligned}
+\begin{bmatrix}
+\pi_t\\
+u_t\\
+r_t
+\end{bmatrix}
+&=
+\begin{bmatrix}
+c_1\\
+c_2\\
+c_3
+\end{bmatrix}
++
+\sum_{l=1}^{4}
+\begin{bmatrix}
+\alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
+\alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
+\alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
+\end{bmatrix}
+\begin{bmatrix}
+\pi_{t-l}\\
+u_{t-l}\\
+r_{t-l}
+\end{bmatrix}
++
+\begin{bmatrix}
+\varepsilon_{1t}\\
+\varepsilon_{2t}\\
+\varepsilon_{3t}
+\end{bmatrix}.
+\end{aligned}
+$$
 
-where $\mathbf{y}_t = (\pi_t,\, u_t,\, r_t)'$, each $\mathbf{A}_l$ is a $3 \times 3$ matrix of coefficients at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$ with $\boldsymbol{\Sigma}$ a $3 \times 3$ positive definite covariance matrix.
-
+where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
