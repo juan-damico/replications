@@ -40,9 +40,8 @@ stock-watson-2001/
 │   ├── 02_lag_selection.R      # AIC / BIC / HQ criteria
 │   ├── 03_var_estimation.R     # Reduced-form VAR estimation
 │   └── 04_irf_analysis.R       # Impulse-response functions + confidence bands
-├── output/
-│   ├── figures/                # IRF plots and diagnostics
-│   └── tables/                 # Coefficient tables and test results
+├── figures/
+│   └── figure.png              # IRF plots and diagnostics
 └── README.md
 ```
 
@@ -91,13 +90,11 @@ Each script is self-contained and annotated. Run them in order for the full pipe
 
 ## Results
 
-> *To be populated as outputs are finalized.*
+### Impulse-Response Functions
 
-Key outputs include:
-- Lag selection table (AIC / BIC / HQ comparison)
-- Estimated VAR coefficients
-- Impulse-response function plots with confidence bands
-- Forecast error variance decomposition (FEVD)
+![Impulse-Response Functions](figures/figure.png)
+
+*Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on the unemployment rate, inflation, and the federal funds rate. Dashed lines represent 95% bootstrap confidence bands. Horizon measured in quarters. Replication based on Stock & Watson (2001).*
 
 ---
 
