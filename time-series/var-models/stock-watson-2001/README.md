@@ -110,6 +110,20 @@ Because VAR residuals are typically correlated across equations, raw shocks cann
 
 ---
 
+## Forecast
+### Pseudo Out-of-Sample Forecasting
+
+To evaluate the VAR's predictive performance relative to simpler benchmarks, pseudo out-of-sample forecasts are generated over the period 1985:Q1–2000:Q4 at a horizon of $h = 4$ quarters ahead. At each period $t$, the model is re-estimated on all data available up to $t$ — an **expanding window** scheme — and the forecast for period $t + 4$ is recorded. This procedure is repeated for three competing models:
+
+- **VAR(4):** the full trivariate system estimated by OLS equation-by-equation,
+- **AR(4):** a univariate autoregression of order 4 estimated independently for each variable,
+- **Random Walk (RW):** a naïve benchmark that sets $\hat{y}_{t+h} = y_t$.
+
+The expanding window ensures that each forecast is genuinely out-of-sample — no future information is used — while allowing the model to exploit the full history of observations as it grows.
+
+![Pseudo Out-of-Sample Forecasts](figures/pseudo_forecasts.png)
+<sub>Figure 2: Pseudo out-of-sample forecasts 4 quarters ahead from a VAR(4), AR(4), and Random Walk, compared against realized values. Estimation period: 1960:Q1–1984:Q4 (initial window); evaluation period: 1985:Q1–2000:Q4. Expanding window re-estimation at each step. The VAR tracks the secular decline in inflation and unemployment through the 1990s more closely than the AR or RW benchmarks, while all three models struggle during the sharp disinflation of the late 1980s.</sub>
+
 ## Citation
 
 **Original Paper**
