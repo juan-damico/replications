@@ -92,59 +92,27 @@ Each script is self-contained and annotated. Run them in order for the full pipe
 
 A Vector Autoregression (VAR) is a multivariate time series model in which each endogenous variable is expressed as a linear function of its own past values and the past values of all other variables in the system. Unlike single-equation models, the VAR treats all variables as jointly endogenous, allowing for rich dynamic interactions across equations. Each equation shares the same right-hand side regressors — $p$ lags of every variable in the system — and is estimated by OLS equation by equation.
 
-The system here consists of three endogenous variables — unemployment rate ($u_t$), inflation ($\pi_t$), and the federal funds rate ($r_t$) — with $p = 4$ lags and a constant term in each equation.
+The system consists of three endogenous variables — inflation ($\pi_t$), unemployment rate ($u_t$), and the federal funds rate ($r_t$) — ordered following Stock & Watson (2001), with $p = 4$ lags and a constant term in each equation.
 
 ### Equation Form
 
-$$u_t = c_1 + \sum_{l=1}^{4} \alpha_{11}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{12}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{13}^{(l)} r_{t-l} + \varepsilon_{1t}$$
+$$\pi_t = c_1 + \sum_{l=1}^{4} \alpha_{11}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{12}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{13}^{(l)} r_{t-l} + \varepsilon_{1t}$$
 
-$$\pi_t = c_2 + \sum_{l=1}^{4} \alpha_{21}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{22}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{23}^{(l)} r_{t-l} + \varepsilon_{2t}$$
+$$u_t = c_2 + \sum_{l=1}^{4} \alpha_{21}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{22}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{23}^{(l)} r_{t-l} + \varepsilon_{2t}$$
 
-$$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{32}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{33}^{(l)} r_{t-l} + \varepsilon_{3t}$$
-
+$$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha_{32}^{(l)} u_{t-l} + \sum_{l=1}^{4} \alpha_{33}^{(l)} r_{t-l} + \varepsilon_{3t}$$
 
 ### Matrix Form
 
-$$
-\begin{aligned}
-\begin{bmatrix}
-u_t\\
-\pi_t\\
-r_t
-\end{bmatrix}
-&=
-\begin{bmatrix}
-c_1\\
-c_2\\
-c_3
-\end{bmatrix}
-+
-\sum_{l=1}^{4}
-\begin{bmatrix}
-\alpha_{11}^{(l)} & \alpha_{12}^{(l)} & \alpha_{13}^{(l)} \\
-\alpha_{21}^{(l)} & \alpha_{22}^{(l)} & \alpha_{23}^{(l)} \\
-\alpha_{31}^{(l)} & \alpha_{32}^{(l)} & \alpha_{33}^{(l)}
-\end{bmatrix}
-\begin{bmatrix}
-u_{t-l}\\
-\pi_{t-l}\\
-r_{t-l}
-\end{bmatrix}
-+
-\begin{bmatrix}
-\varepsilon_{1t}\\
-\varepsilon_{2t}\\
-\varepsilon_{3t}
-\end{bmatrix}.
-\end{aligned}
-$$
+$$\mathbf{y}_t = \mathbf{c} + \mathbf{A}_1 \mathbf{y}_{t-1} + \mathbf{A}_2 \mathbf{y}_{t-2} + \mathbf{A}_3 \mathbf{y}_{t-3} + \mathbf{A}_4 \mathbf{y}_{t-4} + \boldsymbol{\varepsilon}_t$$
 
-where $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma})$ and $\boldsymbol{\Sigma}$ is a $3 \times 3$ positive definite covariance matrix.
+where $\mathbf{y}_t = (\pi_t,\, u_t,\, r_t)'$, each $\mathbf{A}_l$ is a $3 \times 3$ matrix of coefficients at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$ with $\boldsymbol{\Sigma}$ a $3 \times 3$ positive definite covariance matrix.
+
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
 
-where $\mathbf{y}_t = (u_t,\, \pi_t,\, r_t)'$ is the $3 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $3 \times 3$ coefficient matrix at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
+where $\mathbf{y}_t = (\pi_t,\, u_t,\, r_t)'$ is the $3 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $3 \times 3$ coefficient matrix at lag $l$, $\mathbf{c}$ is a $3 \times 1$ vector of intercepts, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
 
 This is the **reduced-form VAR**: each equation is estimated by OLS and the residuals $\boldsymbol{\varepsilon}_t$ are reduced-form disturbances — linear combinations of the underlying structural shocks. As such, they carry no direct structural interpretation. Identification of economically meaningful shocks requires an additional assumption, introduced in the next section via Cholesky decomposition of $\boldsymbol{\Sigma}$.
 
@@ -154,23 +122,23 @@ This is the **reduced-form VAR**: each equation is estimated by OLS and the resi
 
 Structural shocks are recovered via **Cholesky decomposition** of the reduced-form covariance matrix $\boldsymbol{\Sigma} = \mathbf{P}\mathbf{P}'$, where $\mathbf{P}$ is lower triangular. This imposes a **recursive causal ordering**: a variable can be affected contemporaneously only by variables that precede it in the ordering, while all lagged cross-variable effects remain unrestricted.
 
-The ordering adopted is:
+The ordering follows Stock & Watson (2001) exactly:
 
-$$u_t \longrightarrow \pi_t \longrightarrow r_t$$
+$$\pi_t \longrightarrow u_t \longrightarrow r_t$$
 
 This encodes the following identifying assumptions for the current period $t$:
 
-| | $u_t$ shock | $\pi_t$ shock | $r_t$ shock |
+| | $\pi_t$ shock | $u_t$ shock | $r_t$ shock |
 |---|:---:|:---:|:---:|
-| **Unemployment** $u_t$ | ✓ | ✗ | ✗ |
-| **Inflation** $\pi_t$ | ✓ | ✓ | ✗ |
+| **Inflation** $\pi_t$ | ✓ | ✗ | ✗ |
+| **Unemployment** $u_t$ | ✓ | ✓ | ✗ |
 | **Fed Funds Rate** $r_t$ | ✓ | ✓ | ✓ |
 
-Unemployment ($u_t$) does not respond contemporaneously to inflation or monetary policy shocks — it is the most exogenous variable in the system.
+Inflation ($\pi_t$) does not respond contemporaneously to unemployment or monetary policy shocks — as the first variable in the ordering, the price level is assumed to be predetermined within the quarter.
 
-Inflation ($\pi_t$) does not respond contemporaneously to monetary policy shocks — the price level is assumed to be predetermined within the quarter relative to the policy rate.
+Unemployment ($u_t$) does not respond contemporaneously to monetary policy shocks — real activity is assumed to react to interest rate changes only with a lag.
 
-The Federal Funds Rate ($r_t$) responds contemporaneously to all shocks — the Fed sets the rate after observing current unemployment and inflation. All variables interact freely across lags.
+The Federal Funds Rate ($r_t$) responds contemporaneously to all shocks — the Fed is assumed to observe current inflation and unemployment before setting the policy rate within the period. All variables interact freely across lags.
 
 ---
 
@@ -184,10 +152,9 @@ Because VAR residuals are typically correlated across equations, raw shocks cann
 
 ![Impulse-Response Functions](figures/figure.png)
 
-<sub>Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on the unemployment rate, inflation, and the federal funds rate. Identification via Cholesky decomposition with ordering: unemployment → inflation → federal funds rate. Dashed lines represent 68% bootstrap confidence bands. Horizon measured in quarters. Replication based on Stock & Watson (2001).</sub>
+<sub>Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on inflation, unemployment, and the federal funds rate. Identification via Cholesky decomposition with ordering: inflation → unemployment → federal funds rate, following Stock & Watson (2001). Dashed lines represent 68% bootstrap confidence bands. Horizon measured in quarters.</sub>
 
 ---
-
 
 ## Citation
 
