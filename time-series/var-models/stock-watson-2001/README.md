@@ -150,21 +150,6 @@ This is the **reduced-form VAR**: each equation is estimated by OLS and the resi
 
 ---
 
-## Results
-
-### Impulse-Response Functions
-
-An impulse-response function (IRF) traces the dynamic effect of a one-unit shock to one variable on all other variables in the system over a given horizon. In a VAR with $n$ variables, there are $n^2$ such response paths — one for each shock-response pair — which together describe the full propagation of shocks through the system.
-
-Because VAR residuals are typically correlated across equations, raw shocks cannot be interpreted as economically meaningful. To recover interpretable structural shocks, the residuals must be orthogonalized. Here, identification is achieved via **Cholesky decomposition** of the residual covariance matrix, which imposes a **recursive causal ordering** on the variables. This is equivalent to a Structural VAR (SVAR) with short-run zero restrictions: variables ordered earlier in the system are assumed to respond to shocks from variables ordered later only with a lag, while variables ordered later can respond contemporaneously to all preceding variables.
-
-The ordering adopted here is: **Unemployment → Inflation → Federal Funds Rate**. This reflects the assumption that the Fed observes both unemployment and inflation within the period before setting the policy rate, while real and price variables do not respond to monetary policy shocks within the same period. The results should be interpreted with this identifying assumption in mind.
-
-![Impulse-Response Functions](figures/figure.png)
-
-*Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on the unemployment rate, inflation, and the federal funds rate. Identification via Cholesky decomposition with ordering: unemployment → inflation → federal funds rate. Dashed lines represent 95% bootstrap confidence bands. Horizon measured in quarters. Replication based on Stock & Watson (2001).*
----
-
 ## Identification: Recursive Ordering
 
 Structural shocks are recovered via **Cholesky decomposition** of the reduced-form covariance matrix $\boldsymbol{\Sigma} = \mathbf{P}\mathbf{P}'$, where $\mathbf{P}$ is lower triangular. This imposes a **recursive causal ordering**: a variable can be affected contemporaneously only by variables that precede it in the ordering, while all lagged cross-variable effects remain unrestricted.
@@ -182,6 +167,20 @@ This encodes the following identifying assumptions for the current period $t$:
 | $r_t$ shock | ✗ | ✗ | ✓ |
 
 A ✓ means the variable responds contemporaneously to that shock; ✗ means the response is restricted to zero within the period. Concretely: the Fed observes unemployment and inflation before setting the policy rate, while real and price variables do not react to monetary policy shocks within the same quarter. All cross-variable effects are unrestricted across lags.
+
+---
+
+## Results
+
+### Impulse-Response Functions
+
+An impulse-response function (IRF) traces the dynamic effect of a one-unit shock to one variable on all other variables in the system over a given horizon. In a VAR with $n$ variables, there are $n^2$ such response paths — one for each shock-response pair — which together describe the full propagation of shocks through the system.
+
+Because VAR residuals are typically correlated across equations, raw shocks cannot be interpreted as economically meaningful. To recover interpretable structural shocks, the residuals must be orthogonalized via the Cholesky decomposition described above.
+
+![Impulse-Response Functions](figures/figure.png)
+
+<sub>Figure 1: Orthogonalized impulse-response functions from a VAR(4) estimated on the unemployment rate, inflation, and the federal funds rate. Identification via Cholesky decomposition with ordering: unemployment → inflation → federal funds rate. Dashed lines represent 68% bootstrap confidence bands. Horizon measured in quarters. Replication based on Stock & Watson (2001).</sub>
 
 ---
 
