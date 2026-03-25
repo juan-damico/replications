@@ -152,6 +152,44 @@ The expanding window ensures that each forecast is genuinely out-of-sample — n
 ![Pseudo Out-of-Sample Forecasts](figures/pseudo_forecasts)
 <sub>Figure 2: Pseudo out-of-sample forecasts 4 quarters ahead from a VAR(4), AR(4), and Random Walk, compared against realized values. Estimation period: 1960:Q1–1984:Q4 (initial window); evaluation period: 1985:Q1–2000:Q4. Expanding window re-estimation at each step. The VAR tracks the secular decline in inflation and unemployment through the 1990s more closely than the AR or RW benchmarks, while all three models struggle during the sharp disinflation of the late 1980s.</sub>
 
+## Additional Forecasting Exercises
+
+> **Note:** The following exercises are not part of the original replication. They are included as a standalone demonstration of forecasting methodology using Vector Autoregression (VAR) models — the kind of applied work commonly required in economic consulting and policy research.
+
+The dataset covers **1960:Q1 – 2000:Q4** and models three macroeconomic variables jointly: inflation, the unemployment rate, and the federal funds rate, using a VAR(4) specification.
+
+---
+
+### Benchmark Forecast (Pseudo Out-of-Sample)
+
+To evaluate how well the VAR model forecasts, the dataset is split at **1996:Q1**. The model is estimated on data up to that point and then used to produce 4-quarter-ahead forecasts across successive windows using an **expanding estimation window** — meaning each new forecast incorporates all available data up to that point.
+
+This pseudo out-of-sample exercise allows us to compare the VAR's forecasts directly against realized values for the **1996–2000** period. As a benchmark, the VAR(4) is evaluated against two naive alternatives: an AR(4) model (univariate autoregression) and a Random Walk. The figure below plots actual versus forecasted values for all three variables across that window.
+
+![Benchmark Forecast](figures/benchmark.png)
+
+---
+
+### Unconditional Forecast
+
+With the model estimated on the **full sample (1960:Q1 – 2000:Q4)**, a standard unconditional forecast is generated for the **8 quarters following the last observation** — 2001:Q1 through 2002:Q4. All three variables are forecast jointly, with the VAR's internal dynamics governing how each series evolves. The shaded band represents a 95% confidence interval around the point forecast.
+
+This is the most common forecasting use case: given everything known up to the last observation, where does the model expect the economy to head?
+
+![Unconditional Forecast](figures/unconditiona.png)
+
+---
+
+### Conditional (Scenario) Forecast
+
+A frequent task in consulting is answering hypothetical policy questions: *"What happens to inflation and unemployment if the Fed raises rates?"* This exercise demonstrates exactly that.
+
+Using the same VAR(4) estimated on the full sample, a **tightening scenario** is imposed in which the federal funds rate rises by **+2 percentage points** over 8 quarters (2001:Q1 – 2002:Q4), increasing by 25 basis points each quarter. Inflation and unemployment are left to respond **endogenously**, driven by the model's estimated cross-variable dynamics.
+
+The conditional forecast is computed via **successive substitution**: at each step, the model produces a one-step-ahead forecast, the constrained fed funds rate value replaces the model's free prediction, and the updated path is fed back into the next iteration. The figure compares the conditional path against the unconditional baseline.
+
+![Conditional Forecast](figures/conditional.png)
+
 ## Citation
 
 **Original Paper**
