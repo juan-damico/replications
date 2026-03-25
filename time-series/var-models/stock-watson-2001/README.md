@@ -176,7 +176,7 @@ With the model estimated on the **full sample (1960:Q1 – 2000:Q4)**, a standar
 
 This is the most common forecasting use case: given everything known up to the last observation, where does the model expect the economy to head?
 
-![Unconditional Forecast](figures/unconditiona.png)
+![Unconditional Forecast](figures/unconditional.png)
 
 ---
 
@@ -188,7 +188,7 @@ Using the same VAR(4) estimated on the full sample, a **tightening scenario** is
 
 The conditional forecast is computed via **successive substitution**: at each step, the model produces a one-step-ahead forecast, the constrained fed funds rate value replaces the model's free prediction, and the updated path is fed back into the next iteration. The figure compares the conditional path against the unconditional baseline.
 
-![Conditional Forecast](figures/conditional.png)
+![Conditional Forecast](figures/conditiona.png)
 
 ## Citation
 
