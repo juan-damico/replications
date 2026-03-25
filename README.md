@@ -6,9 +6,9 @@ Each replication is self-contained and includes code, data, and documentation.
 
 ## Papers
 
-| # | Paper | Method | Language | Status |
-|---|-------|--------|----------|--------|
-| 01 | [Stock & Watson (2001)](time-series/var-models/stock-watson-2001/) | Recursive VAR | R | ✅ Complete |
+| # | Paper | Method | Language |
+|---|-------|--------|----------|
+| 01 | [Stock & Watson (2001)](time-series/var-models/stock-watson-2001/) | Recursive VAR | R |
 
 ---
 
