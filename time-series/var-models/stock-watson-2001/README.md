@@ -58,7 +58,7 @@ $$r_t = c_3 + \sum_{l=1}^{4} \alpha_{31}^{(l)} \pi_{t-l} + \sum_{l=1}^{4} \alpha
 
 ### Matrix Form
 
-\[
+```math
 \begin{bmatrix}
 \pi_t \\
 u_t \\
@@ -88,7 +88,8 @@ r_{t-l}
 \varepsilon_{2t} \\
 \varepsilon_{3t}
 \end{bmatrix}
-\]
+```
+
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
