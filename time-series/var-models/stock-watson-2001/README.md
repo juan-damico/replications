@@ -90,6 +90,8 @@ r_{t-l}
 \end{bmatrix}
 ```
 
+The matrix representation stacks the endogenous variables into a single vector and expresses the VAR as a linear function of its lagged values. Each coefficient matrix \( A_l \) encodes both own-lag and cross-variable effects at lag \( l \), allowing for rich dynamic interactions across variables. This compact formulation is particularly convenient for estimation, forecasting, and structural analysis, as it enables the use of multivariate linear algebra techniques.
+
 ### Compact Form
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{4} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
