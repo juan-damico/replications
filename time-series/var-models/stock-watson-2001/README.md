@@ -158,6 +158,8 @@ The expanding window ensures that each forecast is genuinely out-of-sample — n
 
 The dataset covers **1960:Q1 – 2000:Q4** and models three macroeconomic variables jointly: inflation, the unemployment rate, and the federal funds rate, using a VAR(4) specification.
 
+A notable result from this exercise is the **price puzzle** — a well-known anomaly in VAR models where a contractionary monetary policy shock (i.e., a rate hike) is associated with a *rise* in inflation rather than the expected decline. This counterintuitive finding is visible in the conditional forecast and has been widely documented in the empirical macro literature. It arises because a reduced-form VAR lacks the structural identification needed to isolate a true exogenous monetary shock from the Fed's forward-looking behavior. Addressing this requires better identification strategies — such as sign restrictions, external instruments, or Cholesky decompositions with theoretically motivated ordering — to properly recover the impulse response of inflation to a contractionary shock.
+
 ---
 
 ### Benchmark Forecast (Pseudo Out-of-Sample)
