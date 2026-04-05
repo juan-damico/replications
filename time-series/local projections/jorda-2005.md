@@ -96,18 +96,20 @@ $$s_t = \frac{\hat{\varepsilon}_{ff,t}^{\perp}}{\text{sd}(\hat{\varepsilon}_{ff,
 
 ### Step 3 — Local Projections
 
-Following Jordà (2005), the impulse response at horizon $h$ is estimated directly via a sequence of OLS regressions. For each response variable $y$ and each horizon $h = 0, 1, \ldots, 24$:
+Following Jordà (2005), the impulse response at horizon $h$ is estimated directly via a sequence of OLS regressions. For each response variable $y_i$ with $i \in \{\text{EM}, \text{P}, \text{PCOM}, \text{FF}, \text{NBRX}, \text{M2}\}$ and each horizon $h = 0, 1, \ldots, 24$:
 
-$$y_{t+h} = \alpha_h + \beta_h\, s_t + \sum_{l=1}^{2} \gamma_{h,l}\, s_{t-l} + \sum_{l=1}^{2} \delta_{h,l}\, y_{t-l} + \sum_{l=1}^{2} \boldsymbol{\theta}_{h,l}'\, \mathbf{x}_{t-l} + \nu_{t+h}$$
+$$y_{i,t+h} = \alpha_i^{(h)} + \beta_i^{(h)}\, \hat{\varepsilon}_t^{ff} + \sum_{l=1}^{12} \boldsymbol{\Gamma}_l^{(h)}\, \mathbf{X}_{t-l} + u_{i,t+h}$$
 
-where $s_t$ is the structural FF shock from Step 2, $y_{t-l}$ are lags of the dependent variable, and $\mathbf{x}_{t-l}$ are 2 lags of all other variables in the system. The IRF at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}_h$.
+where $\hat{\varepsilon}_t^{ff}$ is the structural federal funds rate shock recovered via Cholesky decomposition of the VAR(12) residual covariance matrix (using the ordering EM $\rightarrow$ P $\rightarrow$ PCOM $\rightarrow$ FF $\rightarrow$ NBRX $\rightarrow$ M2), and $\mathbf{X}_{t-l}$ is the full vector of 12 lags of all six variables in the system. The impulse response at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}_i^{(h)}$.
 
-Standard errors are computed using **Newey-West HAC** correction, with the lag order set equal to the horizon $h$ at each step. Confidence bands correspond to the 95% interval $\hat{\beta}_h \pm 1.96 \cdot \hat{\sigma}_h$.
+Because the dependent variable is projected $h$ steps ahead, the regression error $u_{i,t+h}$ follows a moving-average process of order $h-1$ by construction. Standard errors are therefore computed using the **Newey-West HAC** estimator (with 2 lags) to ensure consistent inference. Confidence bands correspond to the 95% interval $\hat{\beta}_i^{(h)} \pm 2 \cdot \hat{\sigma}_i^{(h)}$.
+
+A separate regression is estimated for each horizon $h$ and each response variable $i$ — this is the defining feature of Local Projections relative to the VAR, which obtains all horizons jointly through iteration of a single system.
 
 Estimation is carried out using the `locproj` command (Ugarte-Ruiz, 2025).
 
 ![LP IRFs](figures/local_projection.png)
-<sub>Figure 3: Local Projection IRFs to a one standard deviation shock in the federal funds rate. Grey band: 95% Newey-West confidence interval. Controls: 2 lags of all six variables. Horizon: 24 months.</sub>
+<sub>Figure 3: Local Projection IRFs to a one-standard-deviation structural shock in the federal funds rate. Grey band: 95% Newey-West confidence interval. Controls: 12 lags of all six variables. Horizon: 24 months.</sub>
 
 ---
 
