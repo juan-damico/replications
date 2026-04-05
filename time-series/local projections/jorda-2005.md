@@ -46,7 +46,7 @@ The system follows Evans & Marshall (1998) and consists of six monthly U.S. macr
 | `m2` | Money supply M2 (log) |
 
 
-[![Buy Full Do File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://www.forecastingeconomics.com/)
+[![Buy Full Do File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://jdeconomicstore.com/b/local-projections-jorda2005)
 
 ### Step 1 — VAR(12) as Benchmark
 
