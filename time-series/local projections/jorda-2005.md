@@ -96,13 +96,13 @@ $$s_t = \frac{\hat{\varepsilon}_{ff,t}^{\perp}}{\text{sd}(\hat{\varepsilon}_{ff,
 
 ### Step 3 — Local Projections
 
-Following Jordà (2005), the impulse response at horizon $h$ is estimated directly via a sequence of OLS regressions. For each response variable $y_i$ with $i \in \{\text{EM}, \text{P}, \text{PCOM}, \text{FF}, \text{NBRX}, \text{M2}\}$ and each horizon $h = 0, 1, \ldots, 24$:
+Following Jordà (2005), the impulse response at horizon $h$ is estimated directly via a sequence of OLS regressions. For each response variable $y_{i}$ with $i \in \lbrace\text{EM}, \text{P}, \text{PCOM}, \text{FF}, \text{NBRX}, \text{M2}\rbrace$ and each horizon $h = 0, 1, \ldots, 24$:
 
-$$y_{i,t+h} = \alpha_i^{(h)} + \beta_i^{(h)}\, \hat{\varepsilon}_t^{ff} + \sum_{l=1}^{12} \boldsymbol{\Gamma}_l^{(h)}\, \mathbf{X}_{t-l} + u_{i,t+h}$$
+$$y_{i,t+h} = \alpha_{i}^{(h)} + \beta_{i}^{(h)} \hat{\varepsilon}_{t}^{ff} + \sum_{l=1}^{12} \boldsymbol{\Gamma}_{l}^{(h)} \mathbf{X}_{t-l} + u_{i,t+h}$$
 
-where $\hat{\varepsilon}_t^{ff}$ is the structural federal funds rate shock recovered via Cholesky decomposition of the VAR(12) residual covariance matrix (using the ordering EM $\rightarrow$ P $\rightarrow$ PCOM $\rightarrow$ FF $\rightarrow$ NBRX $\rightarrow$ M2), and $\mathbf{X}_{t-l}$ is the full vector of 12 lags of all six variables in the system. The impulse response at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}_i^{(h)}$.
+where $\hat{\varepsilon}\_{t}^{ff}$ is the structural federal funds rate shock recovered via Cholesky decomposition of the VAR(12) residual covariance matrix (using the ordering EM $\rightarrow$ P $\rightarrow$ PCOM $\rightarrow$ FF $\rightarrow$ NBRX $\rightarrow$ M2), and $\mathbf{X}\_{t-l}$ is the full vector of 12 lags of all six variables in the system. The impulse response at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}\_{i}^{(h)}$.
 
-Because the dependent variable is projected $h$ steps ahead, the regression error $u_{i,t+h}$ follows a moving-average process of order $h-1$ by construction. Standard errors are therefore computed using the **Newey-West HAC** estimator (with 2 lags) to ensure consistent inference. Confidence bands correspond to the 95% interval $\hat{\beta}_i^{(h)} \pm 2 \cdot \hat{\sigma}_i^{(h)}$.
+Because the dependent variable is projected $h$ steps ahead, the regression error $u\_{i,t+h}$ follows a moving-average process of order $h-1$ by construction. Standard errors are therefore computed using the **Newey-West HAC** estimator (with 2 lags) to ensure consistent inference. Confidence bands correspond to the 95% interval $\hat{\beta}\_{i}^{(h)} \pm 2 \cdot \hat{\sigma}\_{i}^{(h)}$.
 
 A separate regression is estimated for each horizon $h$ and each response variable $i$ — this is the defining feature of Local Projections relative to the VAR, which obtains all horizons jointly through iteration of a single system.
 
