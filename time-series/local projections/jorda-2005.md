@@ -26,7 +26,6 @@ local-projections/
 ├── data/
 ├── figures/
 └── jorda-2005.md
-
 ``
 
 ### Variables
