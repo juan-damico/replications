@@ -156,6 +156,18 @@ ssc install locproj
   publisher = {American Economic Association}
 }
 ```
+**Evans & Marshall (1998) - VAR Model**
+```bibtex
+@inproceedings{evans1998monetary,
+  title={Monetary policy and the term structure of nominal interest rates: evidence and theory},
+  author={Evans, Charles L and Marshall, David A},
+  booktitle={Carnegie-Rochester Conference Series on Public Policy},
+  volume={49},
+  pages={53--111},
+  year={1998},
+  organization={Elsevier}
+}
+```
 **Local Projection - Stata package**
 ```bibtex
 @article{ugarte2025locproj,
