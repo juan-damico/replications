@@ -100,7 +100,7 @@ Following Jordà (2005), the impulse response at horizon $h$ is estimated direct
 
 $$y_{i,t+h} = \alpha_{i}^{(h)} + \beta_{i}^{(h)} \hat{\varepsilon}_{t}^{ff} + \sum_{l=1}^{12} \boldsymbol{\Gamma}_{l}^{(h)} \mathbf{X}_{t-l} + u_{i,t+h}$$
 
-where $\hat{\varepsilon}\_{t}^{ff}$ is the structural federal funds rate shock recovered via Cholesky decomposition of the VAR(12) residual covariance matrix (using the ordering EM $\rightarrow$ P $\rightarrow$ PCOM $\rightarrow$ FF $\rightarrow$ NBRX $\rightarrow$ M2), and $\mathbf{X}\_{t-l}$ is the full vector of 12 lags of all six variables in the system. The impulse response at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}\_{i}^{(h)}$.
+where $\hat{\varepsilon}\_{t}^{ff}$ is the structural federal funds rate shock identified in Step 2, and $\mathbf{X}\_{t-l}$, and $\mathbf{X}\_{t-l}$ is the full vector of 12 lags of all six variables in the system. The impulse response at horizon $h$ is given directly by the estimated coefficient $\hat{\beta}\_{i}^{(h)}$.
 
 Because the dependent variable is projected $h$ steps ahead, the regression error $u\_{i,t+h}$ follows a moving-average process of order $h-1$ by construction. Standard errors are therefore computed using the **Newey-West HAC** estimator (with 2 lags) to ensure consistent inference. Confidence bands correspond to the 95% interval $\hat{\beta}\_{i}^{(h)} \pm 2 \cdot \hat{\sigma}\_{i}^{(h)}$.
 
