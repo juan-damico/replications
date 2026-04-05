@@ -156,6 +156,16 @@ ssc install locproj
   publisher = {American Economic Association}
 }
 ```
+**Local Projection - Stata package**
+```bibtex
+@article{ugarte2025locproj,
+  title={Locproj \& Lpgraph: Stata commands to estimate Local Projections},
+  author={Ugarte-Ruiz, Alfonso},
+  journal={BBVA Research WP},
+  pages={25--09},
+  year={2025}
+}
+```
 
 **This Replication**
 ```bibtex
