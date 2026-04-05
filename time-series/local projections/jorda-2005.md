@@ -67,7 +67,7 @@ The first step estimates a reduced-form VAR with 12 lags as a benchmark for the 
 
 $$\mathbf{y}_t = \mathbf{c} + \sum_{l=1}^{12} \mathbf{A}_l\, \mathbf{y}_{t-l} + \boldsymbol{\varepsilon}_t, \qquad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0},\, \boldsymbol{\Sigma})$$
 
-where $\mathbf{y}_t = (\text{em}_t,\, p_t,\, \text{pcom}_t,\, \text{ff}_t,\, \text{nbrx}_t,\, \text{m2}_t)'$ is the $6 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $6 \times 6$ coefficient matrix at lag $l$, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
+where $\mathbf{y}_t = (\text{em}_t, p_t, \text{pcom}_t, \text{ff}_t, \text{nbrx}_t, \text{m2}_t)'$ is the $6 \times 1$ vector of endogenous variables, $\mathbf{A}_l$ is the $6 \times 6$ coefficient matrix at lag $l$, and $\boldsymbol{\Sigma} = \mathbb{E}[\boldsymbol{\varepsilon}_t \boldsymbol{\varepsilon}_t']$ is the reduced-form covariance matrix.
 
 Orthogonalized IRFs are obtained via **Cholesky decomposition** of $\boldsymbol{\Sigma}$, with the recursive ordering:
 
