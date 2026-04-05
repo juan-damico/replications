@@ -95,7 +95,10 @@ The resulting series is then normalized to unit standard deviation, yielding the
 
 $$s_t = \frac{\hat{\varepsilon}_{ff,t}^{\perp}}{\text{sd}(\hat{\varepsilon}_{ff,t}^{\perp})}$$
 
+<div align="center">
 ![FF Shock](figures/shock.png)
+</div>
+
 <sub>Figure 2: Structural federal funds rate shock identified via Cholesky decomposition of the VAR(12) residuals. Normalized to unit standard deviation. Ordering: EM → P → PCOM → FF → NBRX → M2.</sub>
 
 ---
@@ -114,7 +117,10 @@ A separate regression is estimated for each horizon $h$ and each response variab
 
 Estimation is carried out using the `locproj` command (Ugarte-Ruiz, 2025).
 
+<div align="center">
 ![LP IRFs](figures/local_projection.png)
+</div>
+
 <sub>Figure 3: Local Projection IRFs to a one-standard-deviation structural shock in the federal funds rate. Grey band: 95% Newey-West confidence interval. Controls: 12 lags of all six variables. Horizon: 24 months.</sub>
 
 ---
@@ -125,7 +131,10 @@ The final step overlays the VAR(12) and LP IRFs in a single figure for each vari
 
 The key methodological distinction is that the VAR IRFs are obtained by iterating the estimated system forward — each horizon depends on all previous ones — while the LP IRFs are estimated horizon-by-horizon independently. As a result, LP IRFs are more robust to misspecification but typically wider confidence bands at longer horizons.
 
+<div align="center">
 ![VAR vs LP](figures/comparisons.png)
+</div>
+
 <sub>Figure 4: Comparison of VAR(12) orthogonalized IRFs (black, with ±2 s.d. grey band) and Local Projection IRFs (navy dashed) to a one standard deviation federal funds rate shock. Both methods use the same Cholesky identification. Horizon: 24 months.</sub>
 
 ---
