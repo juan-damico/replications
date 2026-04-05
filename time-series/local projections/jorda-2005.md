@@ -23,13 +23,22 @@ Jordà (2005) proposes Local Projections (LP) as an alternative to the VAR-based
 ---
 
 ## Repository Structure
-
-
-local-projections/
-├── code/
+jorda-2005/
 ├── data/
+│   ├── evansmarshall.dta
+│   ├── evansmarshall_with_shock.dta
+│   └── README.md
 ├── figures/
-└── jorda-2005.md
+│   ├── step1_var_irfs.png
+│   ├── step2_ff_shock.png
+│   ├── step3_lp_irfs.png
+│   └── step4_var_vs_lp.png
+├── paper/
+│   ├── jorda_2005.pdf
+│   └── README.md
+├── stata-script/
+│   └── replication_file.do
+└── README.md
 ---
 
 ## Model Specification
