@@ -61,6 +61,9 @@ The system follows Evans & Marshall (1998) and consists of six monthly U.S. macr
 | `nbrx` | Nonborrowed reserves (log) |
 | `m2` | Money supply M2 (log) |
 
+
+[![Texto](https://img.shields.io/badge/Label-Text-color?style=for-the-badge)]([URL](https://www.forecastingeconomics.com/))
+
 ### Step 1 — VAR(12) as Benchmark
 
 The first step estimates a reduced-form VAR with 12 lags as a benchmark for the impulse response functions. Each variable is expressed as a linear function of 12 lags of all six variables in the system:
