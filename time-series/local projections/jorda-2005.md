@@ -8,7 +8,7 @@
 [![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)]()
 [![Journal](https://img.shields.io/badge/Journal-AER%202005-orange?style=flat-square)]()
 
-*Part of the [`replications`](../../../README.md) repository by [Juan Nicolás D'Amico](https://github.com/juan-damico)*
+*Part of the [`replications`](../../README.md) repository by [Juan Nicolás D'Amico](https://github.com/juan-damico)*
 
 </div>
 
@@ -239,6 +239,6 @@ This is an independent replication developed by Juan D'Amico for educational and
 
 <div align="center">
 
-*← Back to [`replications`](../../../README.md)*
+*← Back to [`replications`](../../README.md)*
 
 </div>
