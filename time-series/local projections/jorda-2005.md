@@ -46,7 +46,7 @@ The system follows Evans & Marshall (1998) and consists of six monthly U.S. macr
 | `m2` | Money supply M2 (log) |
 
 
-[![Buy Full Do File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://jdeconomicstore.com/b/local-projections-jorda2005)
+
 
 ### Step 1 — VAR(12) as Benchmark
 
@@ -199,7 +199,15 @@ ssc install locproj
   note         = {GitHub repository}
 }
 ```
+## Complete Replication Script (Stata DO File)
 
+This repository provides modular code to reproduce the main components of the analysis (data preparation, shock construction, and impulse response estimation) separately.
+
+For those interested in a fully integrated and polished workflow, including customized graphs and a professionally structured script, a complete Stata DO file is available at the link below:
+
+[![Buy Complete Stata DO File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://jdeconomicstore.com/b/local-projections-jorda2005)
+
+*Note: This DO file is my property and is not endorsed by the original authors. It is an independent replication and as such it may present discrepancies relative to the original work.*
 ---
 
 ## Dataset
