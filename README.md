@@ -5,9 +5,8 @@ Each replication is self-contained and includes code, data, and documentation.
 ## Papers
 | # | Paper | Method | Language |
 |---|-------|--------|----------|
-| 01 | [Stock & Watson (2001)](time-series/var-models/stock-watson-2001/) | Recursive VAR | R |
-| 02 |[Jorda (2005)](time-series/local%20projections/jorda-2005.md) | Local Projections | Stata |
-
+| 01 | [Stock & Watson (2001)](time-series/var-models/stock-watson-2001/README.md) | Recursive VAR | R |
+| 02 | [Jordà (2005)](time-series/local%20projections/jorda-2005.md) | Local Projections | Stata |
 ---
 
 ## About
