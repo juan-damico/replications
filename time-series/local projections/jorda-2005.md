@@ -199,15 +199,7 @@ ssc install locproj
   note         = {GitHub repository}
 }
 ```
-## Complete Replication Script (Stata DO File)
 
-This repository provides modular code to reproduce the main components of the analysis (data preparation, shock construction, and impulse response estimation) separately.
-
-For those interested in a fully integrated and polished workflow, including customized graphs and a professionally structured script, a complete Stata DO file is available at the link below:
-
-[![Buy Complete Stata DO File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://jdeconomicstore.com/b/local-projections-jorda2005)
-
-*Note: This DO file is my property and is not endorsed by the original authors. It is an independent replication and as such it may present discrepancies relative to the original work.*
 ---
 
 ## Dataset
@@ -224,6 +216,18 @@ The dataset used in this replication is from Evans & Marshall (1998) and contain
 | `m2` | M2 money stock | [`M2SL`](https://fred.stlouisfed.org/series/M2SL) | Available |
 
 Because the commodity price index is not available on FRED and the nonborrowed reserves series has been discontinued in its seasonally adjusted form, the dataset cannot be fully reconstructed from FRED alone for the original sample period. The `evansmarshall.dta` file in the `data/` folder contains the series as used in the paper.
+
+---
+
+## Complete Replication Script (Stata DO File)
+
+This repository provides modular code to reproduce the main components of the analysis (data preparation, shock construction, and impulse response estimation) separately.
+
+For those interested in a fully integrated and polished workflow, including customized graphs and a professionally structured script, a complete Stata DO file is available at the link below:
+
+[![Buy Complete Stata DO File](https://img.shields.io/badge/Buy-Full%20Do%20File-blue?style=for-the-badge)](https://jdeconomicstore.com/b/local-projections-jorda2005)
+
+*Note: This DO file is my property and is not endorsed by the original authors. It is an independent replication and as such it may present discrepancies relative to the original work.*
 
 ---
 
