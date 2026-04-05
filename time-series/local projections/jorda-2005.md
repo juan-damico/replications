@@ -20,14 +20,14 @@
 
 Jordà (2005) proposes Local Projections (LP) as an alternative to the VAR-based approach for estimating impulse response functions. Rather than inverting a fitted VAR model, LPs estimate each horizon of the IRF directly via a sequence of regressions of the outcome variable shifted $h$ periods ahead on a shock and a set of controls. The method is robust to misspecification of the data-generating process and straightforward to implement. This replication follows Evans & Marshall (1998) as the empirical application, using a six-variable monthly system and a monetary policy shock identified via Cholesky decomposition.
 
----
-
+```bash
 local-projections/
 ├── code/
 ├── data/
 ├── figures/
 └── jorda-2005.md
-## Model Specification
+
+``
 
 ### Variables
 
