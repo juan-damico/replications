@@ -49,7 +49,8 @@ jorda-2005/
 
 ### Variables
 
-The system follows Evans & Marshall (1998) and consists of six monthly U.S. macroeconomic variables:
+The system follows Evans & Marshall (1998) and consists of six monthly U.S. macroeconomic variables from January 1960 to February
+2001 (494 observations).
 
 | Variable | Description |
 |---|---|
