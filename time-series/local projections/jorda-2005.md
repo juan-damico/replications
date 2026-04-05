@@ -76,6 +76,7 @@ $$\text{em} \longrightarrow p \longrightarrow \text{pcom} \longrightarrow \text{
 This encodes the assumption that monetary policy (`ff`) responds contemporaneously to output, prices, and commodity prices, but that nonborrowed reserves and money supply adjust after the policy rate within the period.
 
 ![VAR IRFs](figures/evans.png)
+
 <sub>Figure 1: Orthogonalized IRFs from a VAR(12) to a one standard deviation shock in the federal funds rate. Grey band: ±2 standard deviation confidence interval. Cholesky ordering: EM → P → PCOM → FF → NBRX → M2.</sub>
 
 ---
