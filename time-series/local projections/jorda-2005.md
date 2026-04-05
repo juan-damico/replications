@@ -106,7 +106,7 @@ Standard errors are computed using **Newey-West HAC** correction, with the lag o
 
 Estimation is carried out using the `locproj` command (Ugarte-Ruiz, 2025).
 
-![LP IRFs](figures/local projection.png)
+![LP IRFs](figures/local_projection.png)
 <sub>Figure 3: Local Projection IRFs to a one standard deviation shock in the federal funds rate. Grey band: 95% Newey-West confidence interval. Controls: 2 lags of all six variables. Horizon: 24 months.</sub>
 
 ---
